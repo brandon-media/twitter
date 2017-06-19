@@ -20,6 +20,7 @@ module Twitter
       # @return [Twitter::Streaming::Client]
       def initialize(options = {})
         super
+        options[:proxy] = proxy
         @connection = Streaming::Connection.new(options)
       end
 

@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'memoizable', '~> 0.4.2'
   spec.add_dependency 'naught', '~> 1.1'
   spec.add_dependency 'simple_oauth', '~> 0.3.1'
+  spec.add_dependency 'socksify'
   spec.add_development_dependency 'bundler', '~> 1.0'
   spec.authors = ['Erik Michaels-Ober', 'John Nunemaker', 'Wynn Netherland', 'Steve Richert', 'Steve Agalloco']
   spec.description = 'A Ruby interface to the Twitter API.'

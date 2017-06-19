@@ -17,7 +17,7 @@ module Twitter
 
       def stream(request, response)
         if @proxy
-          Socksify::proxy('127.0.0.1', 8088) do
+          Socksify::proxy(@proxy[:ip], @proxy[:port]) do
             do_stream(request, response)
           end
         else

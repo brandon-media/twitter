@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'socksify'
 gem 'jruby-openssl', platforms: :jruby
 gem 'rake'
 gem 'yard'

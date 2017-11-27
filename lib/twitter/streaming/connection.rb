@@ -13,6 +13,7 @@ module Twitter
         @ssl_socket_class = options.fetch(:ssl_socket_class) { OpenSSL::SSL::SSLSocket }
         @using_ssl        = options.fetch(:using_ssl)        { false }
         @proxy            = options.fetch(:proxy)            { nil }
+        @local_ip         = options.fetch(:local_ip)         { nil }
       end
 
       def stream(request, response)
@@ -38,7 +39,11 @@ module Twitter
 
 
       def new_tcp_socket(host, port)
-        @tcp_socket_class.new(Resolv.getaddress(host), port)
+        if @local_ip
+          @tcp_socket_class.new(Resolv.getaddress(host), port, @local_ip)
+        else
+          @tcp_socket_class.new(Resolv.getaddress(host), port)
+        end
       end
 
       def do_stream(request, response)

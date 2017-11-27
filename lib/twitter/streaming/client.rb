@@ -22,6 +22,8 @@ module Twitter
       def initialize(options = {})
         super
         options[:proxy] = proxy
+        options[:local_ip] = local_ip
+
         @connection = Streaming::Connection.new(options)
       end
 

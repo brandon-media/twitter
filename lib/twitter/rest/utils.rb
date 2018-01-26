@@ -47,6 +47,7 @@ module Twitter
       # @param path [String]
       # @param options [Hash]
       def perform_request(request_method, path, options = {})
+        options[:tweet_mode] = 'extended' if request_method == :get || request_method == 'get'
         Twitter::REST::Request.new(self, request_method, path, options).perform
       end
 

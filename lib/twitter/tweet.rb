@@ -7,7 +7,7 @@ module Twitter
     include Twitter::Creatable
     include Twitter::Entities
     # @return [String]
-    attr_reader :filter_level, :in_reply_to_screen_name, :lang, :source, :text
+    attr_reader :filter_level, :in_reply_to_screen_name, :lang, :source
     # @return [Integer]
     attr_reader :favorite_count, :in_reply_to_status_id, :in_reply_to_user_id,
                 :retweet_count
@@ -43,6 +43,15 @@ module Twitter
       end
     end
     memoize :full_text
+
+    def text
+      if @attrs[:extended_tweet]
+        return @attrs[:extended_tweet][:full_text]
+      end
+
+      @attrs[:full_text] || @attrs[:text]
+    end
+    memoize :text
 
     # @return [Addressable::URI] The URL to the tweet.
     def uri
